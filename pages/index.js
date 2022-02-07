@@ -1,17 +1,14 @@
-import Head from "next/head";
-import styled from "styled-components";
-
-const Heading = styled.h1`
-  font-size: 16px;
-  color: green;
-`;
+// import { MainContent, RightMenu } from '../pageStyles/Index/Styles';
+import MainContent from '../components/Home/MainContent/MainContent';
+import MainRight from '../components/Home/MainRight/MainRight';
 
 const Home = () => {
-  return (
-    <>
-      <Heading>HELLO WORLD</Heading>
-    </>
-  );
+	return (
+		<>
+			<MainContent />
+			<MainRight />
+		</>
+	);
 };
 
 export default Home;
