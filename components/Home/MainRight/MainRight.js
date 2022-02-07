@@ -1,5 +1,7 @@
+import { Container } from "./Styles";
+
 const MainRight = (props) => {
-	return <div>HELOO MAInRight</div>;
+  return <Container></Container>;
 };
 
 export default MainRight;
