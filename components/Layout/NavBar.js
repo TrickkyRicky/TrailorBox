@@ -4,8 +4,8 @@ export const NavBar = styled.div`
 	max-width: 20%;
 	width: 100%;
 	height: 100%;
-	border-right: 3px solid #414141;
-	padding-top: 32px;
+	border-right: 1px solid #414141;
+	padding-top: 50px;
 	padding-left: 32px;
 `;
 
@@ -32,6 +32,15 @@ export const FlexRow = styled.div`
 	flex-direction: row;
 	align-items: center;
 	margin: 10px 0px;
+	padding: 3px;
+
+	&:hover {
+		background-color: #d23027;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		transition: all 0.3s ease-in-out;
+		cursor: pointer;
+	}
 `;
 
 export const MenuItemContainer = styled.div`
