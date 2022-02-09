@@ -1,5 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { useState } from 'react';
+import Modal from '../Modal/Modal';
 import { GiFilmProjector } from 'react-icons/gi';
 import { RiHomeFill, RiUserHeartLine } from 'react-icons/ri';
 import { BiCompass } from 'react-icons/bi';
@@ -65,6 +67,9 @@ const Layout = (props) => {
 	let iconColor = '#D22F27';
 	let menuItemColor = '#6B6C74';
 	let menuItemHeading = '#9597A1';
+
+	const [showModal, setShowModal] = useState(false);
+
 	return (
 		<Wrapper>
 			<Container>
@@ -174,10 +179,14 @@ const Layout = (props) => {
 								</FlexRow>
 							</>
 						))}
+						<button onClick={() => setShowModal(true)}>Click me</button>
 					</MenuItemContainer>
 				</NavBar>
 				{props.children}
 			</Container>
+			<Modal onClose={() => setShowModal(false)} show={showModal}>
+				AYE WHAT UP
+			</Modal>
 		</Wrapper>
 	);
 };
