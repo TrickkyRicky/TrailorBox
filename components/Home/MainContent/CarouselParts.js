@@ -31,7 +31,7 @@ const Btn = styled.a`
   color: white;
   font-size: 16px;
   background-color: #d22f27;
-  padding: 15px 35px;
+  padding: 13px 38px;
   text-decoration: none;
   cursor: pointer;
   width: fit-content;
