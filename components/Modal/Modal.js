@@ -1,46 +1,61 @@
-import React, { useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import React, { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import { GiFilmProjector } from "react-icons/gi";
+import { IoCloseSharp } from "react-icons/io5";
+
 import {
-	StyledModalOverlay,
-	StyledModalBody,
-	StyledModal,
-	StyledModalHeader
-} from './Styles';
+  Overlay,
+  ModalContainer,
+  UserInput,
+  LogoContainer,
+  LogoText,
+  LogoTextPeriod,
+  LoginBtnE,
+} from "./Styles";
 
-const Modal = ({ show, onClose, children, title }) => {
-	const [isBrowser, setIsBrowser] = useState(false);
+const Modal = ({ show, onClose }) => {
+  const [isBrowser, setIsBrowser] = useState(false);
 
-	useEffect(() => {
-		setIsBrowser(true);
-	}, []);
+  useEffect(() => {
+    setIsBrowser(true);
+  }, []);
 
-	const handleCloseClick = (e) => {
-		e.preventDefault();
-		onClose();
-	};
+  const handleCloseClick = (e) => {
+    e.preventDefault();
+    onClose();
+  };
 
-	const modalContent = show ? (
-		<StyledModalOverlay>
-			<StyledModal>
-				<StyledModalHeader>
-					<a href='#' onClick={handleCloseClick}>
-						x
-					</a>
-				</StyledModalHeader>
-				{title && <StyledModalTitle>{title}</StyledModalTitle>}
-				<StyledModalBody>{children}</StyledModalBody>
-			</StyledModal>
-		</StyledModalOverlay>
-	) : null;
+  const modalContent = show ? (
+    <>
+      <Overlay onClick={handleCloseClick} />
+      <ModalContainer>
+        <IoCloseSharp
+          size={30}
+          onClick={handleCloseClick}
+          style={{ color: "#D22F27", alignSelf: "flex-end", cursor: "pointer" }}
+        />
+        <LogoContainer>
+          <GiFilmProjector style={{ color: "#D22F27" }} size={45} />
 
-	if (isBrowser) {
-		return ReactDOM.createPortal(
-			modalContent,
-			document.getElementById('modal')
-		);
-	} else {
-		return null;
-	}
+          <LogoText>
+            TrailerBox<LogoTextPeriod>.</LogoTextPeriod>
+          </LogoText>
+        </LogoContainer>
+        <UserInput placeholder="Email" type="text" mb="60px" />
+        <UserInput placeholder="Password" type="password" />
+        <LoginBtnE>Login</LoginBtnE>
+      </ModalContainer>
+    </>
+  ) : null;
+
+  if (isBrowser) {
+    return ReactDOM.createPortal(
+      modalContent,
+      document.getElementById("modal")
+    );
+  } else {
+    return null;
+  }
 };
 
 export default Modal;
