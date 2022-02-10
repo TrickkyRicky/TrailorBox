@@ -1,39 +1,28 @@
 import Image from 'next/image';
 import { HiChevronRight } from 'react-icons/hi';
-import { HiChevronLeft } from 'react-icons/hi';
 import { AiOutlinePlus } from 'react-icons/ai';
-import styled from 'styled-components';
-import { FBox, Btn } from '../../../styles/index.js';
+import { FBox, Btn } from '../../../../styles/index.js';
+import {
+	InfoContainer,
+	Genre,
+	BtnE,
+	Container,
+	Title,
+	Item
+} from './Styles.js';
 
-const Container = styled.div`
-	position: relative;
-`;
-const InfoContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	position: absolute;
-	top: 50%;
-	left: 8%;
-	z-index: 2;
-`;
+export const carouselSettings = {
+	dots: false,
+	infinite: true,
+	speed: 500,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	autoplay: true,
+	speed: 600,
+	autoplaySpeed: 5000,
+	cssEase: 'linear'
+};
 
-const Title = styled.h3`
-	color: white;
-	font-size: 40px;
-	padding-bottom: 10px;
-`;
-const Genre = styled.p`
-	color: silver;
-	// color: #9597a1;
-	font-size: 20px;
-	padding-bottom: 15px;
-`;
-
-const BtnE = styled(Btn)`
-	background-color: rgba(150, 152, 165, 0.5);
-	margin-left: 20px;
-	padding: 5px 10px;
-`;
 export const CarouselItem = (props) => {
 	return (
 		<Container>
@@ -89,16 +78,19 @@ export const NextArrow = (props) => {
 		</div>
 	);
 };
-export const PrevArrow = (props) => {
-	const { onClick } = props;
+export const PrevArrow = () => {
 	return null;
-	// <div
-	//   style={{
-	//     ...style,
-	//     left: 20,
-	//   }}
-	//   onClick={onClick}
-	// >
-	//   {/* <HiChevronLeft color="white" size={30} /> */}
-	// </div>
+};
+
+export const itemCarouselSettings = {
+	infinite: true,
+	dots: false,
+	arrows: false,
+	speed: 500,
+	slidesToShow: 4,
+	slidesToScroll: 1
+};
+
+export const ContentItem = () => {
+	return <Item />;
 };

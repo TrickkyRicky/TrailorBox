@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import {
 	Container,
 	CarouselContainer,
@@ -11,7 +12,14 @@ import {
 import { HiChevronRight } from 'react-icons/hi';
 import { HiChevronLeft } from 'react-icons/hi';
 import { FBox } from '../../../styles/index.js';
-import { CarouselItem, NextArrow, PrevArrow } from './CarouselParts';
+import {
+	CarouselItem,
+	NextArrow,
+	PrevArrow,
+	ContentItem,
+	carouselSettings,
+	itemCarouselSettings
+} from './Carousel/MainCarouselParts';
 import Link from 'next/link';
 
 import Carousel from 'react-slick';
@@ -19,19 +27,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 const MainContent = (props) => {
-	const settings = {
-		dots: false,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		autoplay: true,
-		speed: 600,
-		autoplaySpeed: 5000,
-		cssEase: 'linear',
-		nextArrow: <NextArrow />,
-		prevArrow: <PrevArrow />
-	};
+	const carouselRef = useRef();
 
 	return (
 		<Container>
@@ -47,7 +43,11 @@ const MainContent = (props) => {
 				</Link>
 			</LinkContainer>
 			<CarouselContainer>
-				<Carousel {...settings}>
+				<Carousel
+					{...carouselSettings}
+					prevArrow={<PrevArrow />}
+					nextArrow={<NextArrow />}
+				>
 					<CarouselItem />
 					<CarouselItem />
 					<CarouselItem />
@@ -55,24 +55,31 @@ const MainContent = (props) => {
 			</CarouselContainer>
 			<ScrollContainer>
 				<FBox jc='space-between' ai='center' m='10px 0px 0px 0px'>
-					<OptionHeading>Best Artists</OptionHeading>
+					<OptionHeading>Now Playing</OptionHeading>
 					<FBox>
 						<BtnE>
-							<HiChevronLeft size={25} />
+							<HiChevronLeft
+								size={25}
+								onClick={() => carouselRef.current.slickPrev()}
+							/>
 						</BtnE>
 						<BtnE>
-							<HiChevronRight size={25} />
+							<HiChevronRight
+								size={25}
+								onClick={() => carouselRef.current.slickNext()}
+							/>
 						</BtnE>
 					</FBox>
 				</FBox>
 
-				<FBox jc='space-between' ai='center' m='15px 0px 0px 0px'>
-					<MovieItem></MovieItem>
-					<MovieItem></MovieItem>
-
-					<MovieItem></MovieItem>
-					<MovieItem></MovieItem>
-				</FBox>
+				<Carousel {...itemCarouselSettings} ref={carouselRef}>
+					<ContentItem />
+					<ContentItem />
+					<ContentItem />
+					<ContentItem />
+					<ContentItem />
+					<ContentItem />
+				</Carousel>
 
 				<FBox jc='space-between' ai='center' m='5px 0px 0px 0px'>
 					<OptionHeading>Trending</OptionHeading>
@@ -85,9 +92,7 @@ const MainContent = (props) => {
 						</BtnE>
 					</FBox>
 				</FBox>
-				<FBox jc='space-between' ai='center' m='10px 0px 0px 0px'>
-					<MovieItem></MovieItem>
-					<MovieItem></MovieItem>
+				<FBox jc='flex-start' ai='center' m='10px 0px 0px 0px'>
 					<MovieItem></MovieItem>
 					<MovieItem></MovieItem>
 				</FBox>

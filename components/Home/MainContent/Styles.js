@@ -47,9 +47,10 @@ export const BtnE = styled(Btn)`
 
 export const MovieItem = styled.div`
 	height: 200px;
-	min-width: 23%;
+	width: 100px;
 	background-color: #9597a1;
 	border-radius: 5px;
+	margin: 0px 20px;
 `;
 
 export const ScrollContainer = styled.div`

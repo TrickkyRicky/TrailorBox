@@ -39,7 +39,7 @@ const MainRight = (props) => {
 					<SearchIcon size={25} />
 					<SearchInput placeholder='Search' />
 				</Search>
-				<Heading>Popular Movies</Heading>
+				<Heading>Most Popular</Heading>
 				<MovieList>
 					{movies.map((movie, index) => (
 						<MovieItem key={index}>
@@ -52,7 +52,7 @@ const MainRight = (props) => {
 					))}
 				</MovieList>
 				<SeeMoreButton>See More</SeeMoreButton>
-				<Heading>Favorites</Heading>
+				<Heading>Trending</Heading>
 				<MovieList>
 					{movies.map((movie, index) => (
 						<MovieItem key={index}>

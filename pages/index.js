@@ -1,13 +1,13 @@
-import MainContent from "../components/Home/MainContent/MainContent";
-import MainRight from "../components/Home/MainRight/MainRight";
+import MainContent from '../components/Home/MainContent/MainContent';
+import MainRight from '../components/Home/MainRight/MainRight';
 
 const Home = () => {
-  return (
-    <>
-      <MainContent />
-      <MainRight />
-    </>
-  );
+	return (
+		<>
+			<MainContent />
+			<MainRight />
+		</>
+	);
 };
 
 export default Home;
